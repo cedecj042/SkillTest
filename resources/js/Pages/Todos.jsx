@@ -6,9 +6,9 @@ import Modal from "@/Components/Modal";
 import { useState } from "react";
 import TodoTable from "@/Components/Tables/TodoTable";
 import AddTodoForm from "@/Components/Forms/AddTodoForm";
+import GuestLayout from "@/Layouts/GuestLayout";
 
-export default function Todos({ todos }) {
-    console.log(todos);
+export default function Todos({ todos,title }) {
     const [modal,setModal] = useState(false);
     const openModal = ()=>{
         setModal(true);
@@ -17,9 +17,9 @@ export default function Todos({ todos }) {
         setModal(false)
     };
     return (
-        <>
-            <Head title="Users" />
-            <Navbar />
+        <GuestLayout>
+            <Head title="Todos" />
+            <Navbar title={title} />
             <div className="container p-5">
                 <div className="row">
                     <div className="col-12">
@@ -44,6 +44,6 @@ export default function Todos({ todos }) {
                 <AddTodoForm closeModal={closeModal}/>
                 
             </Modal>
-        </>
+        </GuestLayout>
     );
 }

@@ -22,6 +22,7 @@ class UserController extends Controller
         $users = $query->paginate(10)->onEachSide(1);
 
         return Inertia::render('Users',[
+            'title' => 'Users',
             'users'=> UserResource::collection($users)
         ]);
     }

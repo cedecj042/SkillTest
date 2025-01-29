@@ -19,7 +19,6 @@ export default function LoginForm() {
     const onSubmit = async (data) => {
         postRequest('login', data, {
             onSuccess: (data) => {
-                console.log(data);
                 toast.success('Login Successful', { duration: 3000 });
             },
             onError: (error) => {
@@ -30,7 +29,6 @@ export default function LoginForm() {
                     } else {
                         Object.entries(error).forEach(([field, message]) => {
                             setError(field, { message });
-                            console.log(`Field: ${field}, Error: ${message}`);
                         });
                         toast.error("Login Unsuccessful", { duration: 3000 });
                     }

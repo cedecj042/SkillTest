@@ -1,5 +1,6 @@
 import { Toaster } from "sonner";
 
+
 export default function GuestLayout({ children }) {
     return (
         <>
@@ -13,7 +14,7 @@ export default function GuestLayout({ children }) {
                         fontSize: "1rem",
                     },
                 }}
-                closeButton 
+                closeButton
             />
             {children}
         </>

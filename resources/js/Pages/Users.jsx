@@ -6,8 +6,9 @@ import Pagination from "@/Components/Pagination";
 import Modal from "@/Components/Modal";
 import { useState } from "react";
 import AddUserForm from "@/Components/Forms/AddUserForm";
+import GuestLayout from "@/Layouts/GuestLayout";
 
-export default function Users({ users }) {
+export default function Users({ users,title }) {
     console.log(users);
     const {modal,setModal} = useState(false);
     const openModal = ()=>{
@@ -15,9 +16,9 @@ export default function Users({ users }) {
     }
     const closeModal = () => setModal(false);
     return (
-        <>
-            <Head title="Users" />
-            <Navbar />
+        <GuestLayout>
+            <Head title={title} />
+            <Navbar title={title}/>
             <div className="container p-5">
                 <div className="row">
                     <div className="col-12">
@@ -40,6 +41,6 @@ export default function Users({ users }) {
                 <AddUserForm onClose={closeModal}/>
                 
             </Modal>
-        </>
+        </GuestLayout>
     );
 }

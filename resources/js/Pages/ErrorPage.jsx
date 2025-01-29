@@ -4,7 +4,6 @@ import '../../css/auth.css';
 
 export default function ErrorPage({title,message}){
     const { props } = usePage();
-    console.log(props)
     return(
         <GuestLayout>
             <Head title={title}/>

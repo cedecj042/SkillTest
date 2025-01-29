@@ -16,8 +16,8 @@ Route::middleware('guest')->group(function(){
 }); 
 
 Route::middleware(['auth'])->group(function () {
-    Route::redirect('/', '/users');
-    Route::redirect('/api', '/users');
+    Route::redirect('/', '/todos');
+    Route::redirect('/api', '/todos');
     Route::redirect('/users', destination: '/users');
     Route::redirect('/todo', '/todos');
     Route::prefix('users')->name('users.')->group(function(){

@@ -15,15 +15,14 @@ export default function AddTodoForm({ closeModal }) {
     const { isProcessing, postRequest } = useRequest();
 
     const onSubmit = async (data) =>{
-        postRequest('todo.store',data,{
-            onSuccess: (data) => {
-                toast.success("Added Todo Successfully", { duration: 3000 });
+        postRequest('todos.store',data,{
+            onSuccess: (data) => {  
+                toast.success(data.props.flash.sucess, { duration: 3000 });
                 reset(); 
                 closeModal();
             },
             onError: (error) => {
                 if (error) {
-
                     Object.entries(error).forEach(([field, message]) => {
                         setError(field,{message:message});
                         console.log(`Field: ${field}, Error: ${message}`);

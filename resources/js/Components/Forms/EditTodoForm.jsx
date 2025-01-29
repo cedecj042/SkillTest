@@ -23,7 +23,7 @@ export default function EditTodoForm({ closeModal, todo }) {
     const { isProcessing, putRequest } = useRequest();
     const onSubmitForm = async (data) => {
         console.log(data);
-        putRequest('todo.update', data.todo_id, data, {
+        putRequest('todos.update', data.todo_id, data, {
             onSuccess: (success) => {
                 toast.success('Todo updated successfully', { duration: 3000 });
                 reset();

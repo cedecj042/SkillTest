@@ -26,6 +26,7 @@ class TodoController extends Controller
             ->onEachSide(1);
         
         return Inertia::render('Todos', [
+            'title' => 'Todos',
             'todos' => TodoResource::collection($todos),
         ]);
     }
@@ -56,10 +57,11 @@ class TodoController extends Controller
     }
     public function show(int $id)
     {
-
+        Log::info($id);
         try {
             $todo = Todo::findOrFail($id);
-            return Inertia::render('Todo', [
+            return Inertia::render('TodoDetail', [
+                'title' => 'Todos',
                 'todo' => new TodoResource($todo)
             ]);
         } catch (Exception $e) {
@@ -67,7 +69,6 @@ class TodoController extends Controller
             return redirect()->back()->withErrors(['error' => 'Unable to save the todo']);
         }
     }
-
 
     /**
      * Update the specified resource in storage.

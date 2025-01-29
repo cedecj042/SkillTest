@@ -9,6 +9,9 @@
 *::placeholder{
     font-family: Inter;
 }
+.toast{
+    z-index: 50;
+}
 
 .grid-5{
     grid-template-columns: repeat(5,1fr);

@@ -8,7 +8,6 @@ import DeleteForm from "../Forms/DeleteForm";
 import { toast } from "sonner";
 
 export default function TodoTable({ todos }) {
-    console.log(todos);
 
     const [modal, setModal] = useState(false);
     const [editModal, setEditModal] = useState(false);
@@ -36,7 +35,7 @@ export default function TodoTable({ todos }) {
         setModal(false);
     }
 
-    const { isProcessing, deleteRequest, putRequest } = useRequest();
+    const { isProcessing, deleteRequest, putRequest,getRequest } = useRequest();
 
 
     const truncateText = (text, maxLength) => {
@@ -49,7 +48,7 @@ export default function TodoTable({ todos }) {
 
 
     const deleteTodo = async (todo) => {
-        deleteRequest("todo.delete", todo.todo_id, {
+        deleteRequest("todos.delete", todo.todo_id, {
             onSuccess: (data) => {
                 toast.success("Todo deleted successfully", { duration: 3000 });
                 closeDeleteModal();
@@ -59,6 +58,12 @@ export default function TodoTable({ todos }) {
             },
         });
     };
+
+    const openTodoDetail = async (e,todo_id) =>{
+        // e.preventdefault();
+        console.log(todo_id);
+        getRequest("todos.show",todo_id,{})
+    }
 
     return (
         <>
@@ -82,7 +87,7 @@ export default function TodoTable({ todos }) {
                         </tr>
                     ) : (
                         todos.map((todo, index) => (
-                            <tr key={index} className="clickable" onClick={() => { openModal(todo) }}>
+                            <tr key={index} className="clickable" onClick={(e) => {openTodoDetail(e,todo.todo_id)}}>
                                 {/* <td>{todo.todo_id}</td> */}
                                 <td>{todo.title}</td>
                                 <td>{truncateText(todo.description, 80)}</td>
@@ -142,7 +147,7 @@ export default function TodoTable({ todos }) {
                 )}
             </Modal>
 
-            <Modal
+            {/* <Modal
                 modalTitle={"Todo"}
                 onClose={closeModal}
                 show={modal}
@@ -174,7 +179,7 @@ export default function TodoTable({ todos }) {
                     </>
                 )}
 
-            </Modal>
+            </Modal> */}
         </>
     )
 }
