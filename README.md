@@ -224,3 +224,6 @@ curl -X POST http://localhost:8000/todos/167 \
 ![update](https://github.com/user-attachments/assets/31452e1b-88ab-404e-b864-670e2cbf3068)
 7. Delete
 ![delete](https://github.com/user-attachments/assets/8b043a87-e4ee-415f-9b2c-07840165899c)
+8. Page not found
+![error](https://github.com/user-attachments/assets/0b8d767f-3432-4e3e-9363-ea6e5f82fc38)
+
