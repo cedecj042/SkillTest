@@ -209,3 +209,21 @@ curl -X POST http://localhost:8000/todos/167 \
 }
 ```
 
+## FrontEnd Screenshots
+1. Signup
+![signup](https://github.com/user-attachments/assets/94359e90-f54d-4528-a2e8-fcb305d2957a)
+2. Login
+![login](https://github.com/user-attachments/assets/8a182046-4f9b-42ac-84e2-80e2b65335f8)
+3. Index
+![index](https://github.com/user-attachments/assets/9f460900-2728-4435-93ca-83c58a48b7a0)
+4. Add
+![add](https://github.com/user-attachments/assets/0826c4ac-5adc-444c-90f7-e85ec1b17ee4)
+5. Show
+![show](https://github.com/user-attachments/assets/77263536-db30-42eb-8e7c-fc88bb08aefb)
+6. Update
+![update](https://github.com/user-attachments/assets/31452e1b-88ab-404e-b864-670e2cbf3068)
+7. Delete
+![delete](https://github.com/user-attachments/assets/8b043a87-e4ee-415f-9b2c-07840165899c)
+8. Page not found
+![error](https://github.com/user-attachments/assets/0b8d767f-3432-4e3e-9363-ea6e5f82fc38)
+
