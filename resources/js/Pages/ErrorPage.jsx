@@ -13,7 +13,7 @@ export default function ErrorPage({title,message}){
                         <img src="/assets/stop.svg" alt="" height={"450"}/>
                         <h3>Oops..</h3>
                         <p>{message}</p>
-                        <Link className="btn btn-primary d-inline-flex" href={route('todo.index')}>
+                        <Link className="btn btn-primary d-inline-flex" href={route('todos.index')}>
                             Redirect back to users
                         </Link>
                     </div>

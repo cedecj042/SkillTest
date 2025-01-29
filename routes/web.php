@@ -38,8 +38,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/logout',[AuthController::class,'logout'])->name('logout');        
 });
 
+
 Route::fallback(function () {
-    return Inertia::render('ErrorPage',[
-        'message'=>'We couldn’t find the page you’re looking for.'
+    return Inertia::render('ErrorPage', [
+        'message' => 'We couldn’t find the page you’re looking for.'
     ]);
 });
