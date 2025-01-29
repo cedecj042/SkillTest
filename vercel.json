@@ -16,7 +16,7 @@
         "APP_URL": "https://skill-test-nu.vercel.app/",
         "FORCE_HTTPS": "true",
         "APP_KEY": "base64:awcBML9hAz/7mXsqTtVhjsVgXnxPCC1S/7MBC3CNehc=",
-
+        
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
         "APP_PACKAGES_CACHE": "/tmp/packages.php",

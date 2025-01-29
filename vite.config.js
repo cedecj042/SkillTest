@@ -10,12 +10,4 @@ export default defineConfig({
         }),
         react(),
     ],
-    server:{
-        https:true
-    },
-    build: {
-        outDir: 'public/build',
-        manifest: true,
-    },
-    base: '/build/',
 });
