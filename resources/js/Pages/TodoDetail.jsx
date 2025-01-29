@@ -3,7 +3,8 @@ import GuestLayout from "@/Layouts/GuestLayout";
 import { useRequest } from "@/Library/hooks";
 import { Head } from "@inertiajs/react";
 
-export default function TodoDetail({ todo }) {
+export default function TodoDetail({ todo, title }) {
+    console.log(title)
     const {isProcessing,getRequest} = useRequest();
     const handleBackClick = async () => {
         getRequest('todos.index', {});
@@ -11,7 +12,7 @@ export default function TodoDetail({ todo }) {
     return (
         <GuestLayout>
             <Head title="Todos" />
-            <Navbar />
+            <Navbar title={title}/>
             <div className="container">
                 <div className="row vh-100 p-5">
                     <div className="col-12">
