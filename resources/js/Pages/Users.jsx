@@ -23,13 +23,12 @@ export default function Users({ users }) {
                     <div className="col-12">
                         <div className="d-flex flex-row justify-content-between mb-3">
                             <h3>List of Users</h3>
-                            <button className="btn btn-primary" onClick={openModal}>Add User</button>
+                            {/* <button className="btn btn-primary" onClick={openModal}>Add User</button> */}
                         </div>
                         <div className="table-header">
                             <UserTable users={users.data} />
                         </div>
                         <Pagination links={users.meta.links} />
-
                     </div>
                 </div>
             </div>

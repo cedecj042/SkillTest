@@ -10,10 +10,10 @@ import { toast } from "sonner";
 export default function TodoTable({ todos }) {
     console.log(todos);
 
+    const [modal, setModal] = useState(false);
     const [editModal, setEditModal] = useState(false);
     const [deleteModal, setDeleteModal] = useState(false);
     const [selectedTodo, setSelectedTodo] = useState(null);
-    console.log(selectedTodo)
     const openEditModal = (todo) => {
         setEditModal(true);
         setSelectedTodo(todo);
@@ -28,7 +28,16 @@ export default function TodoTable({ todos }) {
     const closeDeleteModal = () => {
         setDeleteModal(false);
     }
+    const openModal = (todo) => {
+        setModal(true);
+        setSelectedTodo(todo);
+    }
+    const closeModal = () => {
+        setModal(false);
+    }
+
     const { isProcessing, deleteRequest, putRequest } = useRequest();
+
 
     const truncateText = (text, maxLength) => {
         if (text.length > maxLength) {
@@ -36,6 +45,8 @@ export default function TodoTable({ todos }) {
         }
         return text;
     };
+
+
 
     const deleteTodo = async (todo) => {
         deleteRequest("todo.delete", todo.todo_id, {
@@ -46,8 +57,9 @@ export default function TodoTable({ todos }) {
             onError: () => {
                 toast.error("Failed to delete todo", { duration: 3000 });
             },
-        }); 
+        });
     };
+
     return (
         <>
             <table className="table todos-table">
@@ -62,42 +74,51 @@ export default function TodoTable({ todos }) {
                     </tr>
                 </thead>
                 <tbody>
-                    {todos.map((todo, index) => (
-                        <tr key={index}>
-                            {/* <td>{todo.todo_id}</td> */}
-                            <td>{todo.title}</td>
-                            <td>{truncateText(todo.description, 80)}</td>
-                            <td>{todo.created_at}</td>
-                            <td>{todo.due_date}</td>
-                            <td>
-                                <div className="d-inline-flex gap-2">
-                                    <button
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            openEditModal(todo)
-                                        }}
-                                        className="btn btn-outline-primary d-flex justify-content-center align-items-left"
-                                    >
-                                        <span className="material-symbols-outlined align-self-center">
-                                            edit_square
-                                        </span>{" "}
-                                        Edit
-                                    </button>
-                                    <button
-                                        type="button"
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            openDeleteModal(todo);
-                                        }}
-                                        className="btn btn-outline-danger d-flex justify-content-center align-items-left"
-                                        disabled={isProcessing}
-                                    >
-                                        <span className="material-symbols-outlined">delete</span> Delete
-                                    </button>
-                                </div>
+                    {todos.length === 0 ? (
+                        <tr>
+                            <td colSpan="5" className="text-center text-muted">
+                                No todos found. Add some new todos!
                             </td>
                         </tr>
-                    ))}
+                    ) : (
+                        todos.map((todo, index) => (
+                            <tr key={index} className="clickable" onClick={() => { openModal(todo) }}>
+                                {/* <td>{todo.todo_id}</td> */}
+                                <td>{todo.title}</td>
+                                <td>{truncateText(todo.description, 80)}</td>
+                                <td>{todo.created_at}</td>
+                                <td>{todo.due_date}</td>
+                                <td>
+                                    <div className="d-inline-flex gap-2">
+                                        <button
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                openEditModal(todo)
+                                            }}
+                                            className="btn btn-outline-primary d-flex justify-content-center align-items-left"
+                                        >
+                                            <span className="material-symbols-outlined align-self-center">
+                                                edit_square
+                                            </span>{" "}
+                                            Edit
+                                        </button>
+                                        <button
+                                            type="button"
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                openDeleteModal(todo);
+                                            }}
+                                            className="btn btn-outline-danger d-flex justify-content-center align-items-left"
+                                            disabled={isProcessing}
+                                        >
+                                            <span className="material-symbols-outlined">delete</span> Delete
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        ))
+                    )}
+                    
                 </tbody>
             </table>
             <Modal
@@ -116,9 +137,43 @@ export default function TodoTable({ todos }) {
             >
                 {selectedTodo && (
                     <DeleteForm onClose={closeDeleteModal} onDelete={() => deleteTodo(selectedTodo)} isProcessing={isProcessing}
-                    title={selectedTodo.title}
-                />
+                        title={selectedTodo.title}
+                    />
                 )}
+            </Modal>
+
+            <Modal
+                modalTitle={"Todo"}
+                onClose={closeModal}
+                show={modal}
+            >
+                {selectedTodo && (
+                    <>
+                        <div className="modal-body">
+                            <h2>{selectedTodo.title}</h2>
+                            <div className="px-3 py-2 mb-2 bg-light rounded">
+                                <label className="text-secondary" style={{ fontSize: '.8rem' }}>Description</label>
+                                <p className="m-0">{selectedTodo.description}</p>
+                            </div>
+                            <div className="d-grid grid-2">
+                                <div className="px-3 py-2 bg-light rounded">
+                                    <label className="text-secondary" style={{ fontSize: '.8rem' }}>Created At</label>
+                                    <p className="m-0">{selectedTodo.created_at}</p>
+                                </div>
+                                <div className="px-3 py-2 bg-light rounded">
+                                    <label className="text-secondary" style={{ fontSize: '.8rem' }}>Due Date</label>
+                                    <p className="m-0">{selectedTodo.due_date}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" onClick={closeModal} className="btn btn-secondary">
+                                Go Back
+                            </button>
+                        </div>
+                    </>
+                )}
+
             </Modal>
         </>
     )

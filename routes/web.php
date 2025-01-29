@@ -19,16 +19,16 @@ Route::middleware(['auth'])->group(function () {
     Route::redirect('/', '/users');
     Route::redirect('/api', '/users');
     Route::redirect('/users', destination: '/users');
-    Route::redirect('/todos', '/todo');
+    Route::redirect('/todo', '/todos');
     Route::prefix('users')->name('users.')->group(function(){
         Route::get('/', [UserController::class, 'index'])->name('index');
-        Route::post('/',[UserController::class,'store'])->name('store');
-        Route::get('/{id}',[UserController::class,'show'])->name('show');
-        Route::put('/{id}',[UserController::class,'update'])->name('update');
-        Route::delete('/{id}',[UserController::class,'delete'])->name('delete');
+        // Route::post('/',[UserController::class,'store'])->name('store');
+        // Route::get('/{id}',[UserController::class,'show'])->name('show');
+        // Route::put('/{id}',[UserController::class,'update'])->name('update');
+        // Route::delete('/{id}',[UserController::class,'delete'])->name('delete');
     });
 
-    Route::prefix('todo')->name('todo.')->group(function(){
+    Route::prefix('todos')->name('todos.')->group(function(){
         Route::get('/', [TodoController::class, 'index'])->name('index');
         Route::post('/',[TodoController::class,'store'])->name('store');
         Route::get('/{id}',[TodoController::class,'show'])->name('show');

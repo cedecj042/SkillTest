@@ -24,7 +24,7 @@ class TodoController extends Controller
         $todos = Todo::where('user_id', $user->user_id)
             ->paginate(10)
             ->onEachSide(1);
-
+        
         return Inertia::render('Todos', [
             'todos' => TodoResource::collection($todos),
         ]);

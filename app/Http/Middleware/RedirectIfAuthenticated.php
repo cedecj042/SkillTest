@@ -17,7 +17,7 @@ class RedirectIfAuthenticated
     public function handle(Request $request, Closure $next): Response
     {
         if (Auth::check()) {
-            return redirect()->route('todo.index');
+            return redirect()->route('todos.index');
         }
     
         return $next($request);

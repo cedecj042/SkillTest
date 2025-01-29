@@ -28,7 +28,7 @@ class AuthController extends Controller
                 $request->session()->regenerate();
                 Log::info('User Successfully logged in: '. $validated['email']);
                 
-                return redirect()->route('api.index')->with(['message' => 'Login Successfully!']);
+                return redirect()->route('todos.index')->with(['message' => 'Login Successfully!']);
             }
             Log::info('The provided credentials do not match our records.');
             return redirect()->back()->withErrors( ['error'=>'The provided credentials do not match our records.']);

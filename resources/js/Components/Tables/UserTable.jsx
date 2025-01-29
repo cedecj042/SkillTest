@@ -24,23 +24,23 @@ export default function UserTable({ users }) {
             <table className="table students-table">
                 <thead>
                     <tr>
-                        <th>User Id</th>
+                        {/* <th>User Id</th> */}
                         <th>Firstname</th>
                         <th>Lastname</th>
                         <th>Email</th>
                         <th>Created At</th>
-                        <th>Actions</th>
+                        {/* <th>Actions</th> */}
                     </tr>
                 </thead>
                 <tbody>
                     {users.map((user, index) => (
                         <tr key={index}>
-                            <td>{user.user_id}</td>
+                            {/* <td>{user.user_id}</td> */}
                             <td>{user.firstname}</td>
                             <td>{user.lastname}</td>
                             <td>{user.email}</td>
                             <td>{user.created_at}</td>
-                            <td>
+                            {/* <td>
                                 <div className="d-inline-flex gap-2">
                                     <button
                                         onClick={(e) => {
@@ -66,7 +66,7 @@ export default function UserTable({ users }) {
                                         <span className="material-symbols-outlined">delete</span> Delete
                                     </button>
                                 </div>
-                            </td>
+                            </td> */}
                         </tr>
                     ))}
                 </tbody>
