@@ -1,0 +1,45 @@
+.background {
+    background-image: url("../../public/assets/background.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* .card {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.17);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+} */
+
+.card{
+    background-color: transparent;
+    border: none;
+}
+
+.form-control{
+    font-size: 1.1rem !important;
+}
+.auth-btn{
+    width: 10rem;;
+}
+
+.auth-labels{
+    font-size: 1.1rem !important;
+}
+
+.auth-textbox{
+    font-size: 1.1rem !important;
+    padding: .8rem !important;
+}
+
+.auth-btn{
+    font-size: 1.2rem;
+}
+
+.alert-danger {
+    color:#bd2131 !important;
+    background-color: rgba(255, 218, 221,0.55) ;
+}
