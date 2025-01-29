@@ -102,7 +102,7 @@ Password: usjr1234
 
 ## Testing and Integration
 
-### Request and responses.
+#### Routes
 ```
 Route::prefix('todos')->name('todos.')->group(function(){
     Route::get('/', [TodoController::class, 'index'])->name('index');
@@ -113,7 +113,15 @@ Route::prefix('todos')->name('todos.')->group(function(){
 });
 ```
 
-1. Reponse for todos.index:
+
+1. Request and Response for todos.index:
+#### Request
+```
+curl -X GET http://localhost:8000/todos \
+     -H "Accept: application/json"
+```
+### Response
+
 ```
 [
     {
@@ -133,7 +141,12 @@ Route::prefix('todos')->name('todos.')->group(function(){
 ]
 ```
 
-2. Response for todos.show
+2. Request and Response for todos.show
+```
+curl -X GET http://localhost:8000/todos/166 \
+     -H "Accept: application/json"
+```
+### Response
 ```
 {
     "todo_id": 166,
@@ -144,17 +157,49 @@ Route::prefix('todos')->name('todos.')->group(function(){
 }
 ```
 
-3. Response for todos.store
+3. Request and Response for todos.store
+### Request
+```
+curl -X POST http://localhost:8000/todos \
+     -H "Accept: application/json" \
+     -H "Content-Type: application/json" \
+     -d '{
+           "title": "Complete API Development",
+           "description": "Finish the CRUD API for the Full Stack Developer test",
+           "due_date": "2025-03-01"
+         }'
+```
+### Response
 ```
 {“success”:”Todo created successfully”}
 ```
 
-4. Response for todos.delete
+4. Request and Response for todos.delete
+### Request
+```
+curl -X DELETE http://localhost:8000/todos/166 \
+     -H "Accept: application/json"
+
+```
+### Response
 ```
 {“success”:”Todo deleted successfully”}
 ```
 
-5. Response for todos.update
+5. Request and Response for todos.update
+### Request
+```
+curl -X POST http://localhost:8000/todos/167 \
+     -H "Accept: application/json" \
+     -H "Content-Type: application/json" \
+     -d '{
+           "todo_id": 167,
+           "title": "Complete API Development",
+           "description": "Finish the CRUD API for the Full Stack Developer test",
+           "due_date": "2025-03-01"
+         }'
+```
+### Response
 ```
 {
     "todo_id": 166,
