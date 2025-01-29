@@ -41,6 +41,7 @@ Route::middleware(['auth'])->group(function () {
 
 Route::fallback(function () {
     return Inertia::render('ErrorPage', [
-        'message' => 'We couldn’t find the page you’re looking for.'
+        'message' => 'We couldn’t find the page you’re looking for.',
+        'title'=> 'Page Not Found'
     ]);
 });

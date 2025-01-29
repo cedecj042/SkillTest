@@ -14,7 +14,7 @@ export default function ErrorPage({title,message}){
                         <h3>Oops..</h3>
                         <p>{message}</p>
                         <Link className="btn btn-primary d-inline-flex" href={route('todos.index')}>
-                            Redirect back to users
+                            Redirect back to Homepage
                         </Link>
                     </div>
                 </div>
