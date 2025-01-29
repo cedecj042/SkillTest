@@ -97,3 +97,70 @@ In my database seeder, I've created accounts for testing:
 
 Email: test@email.com
 Password: usjr1234
+
+
+
+## Testing and Integration
+
+### Request and responses.
+```
+Route::prefix('todos')->name('todos.')->group(function(){
+    Route::get('/', [TodoController::class, 'index'])->name('index');
+    Route::post('/',[TodoController::class,'store'])->name('store');
+    Route::get('/{id}',[TodoController::class,'show'])->name('show');
+    Route::put('/{id}',[TodoController::class,'update'])->name('update');
+    Route::delete('/{id}',[TodoController::class,'delete'])->name('delete');
+});
+```
+
+1. Reponse for todos.index:
+```
+[
+    {
+        "todo_id": 166,
+        "title": "Et praesentium cumque assumenda quia",
+        "description": "Est impedit exercitationem illum voluptatem. Porro nam et ut quaerat illo placeat eaque. Temporibus nemo voluptates natus est ipsam est reiciendis rerum.",
+        "due_date": "February 14, 2025",
+        "created_at": "January 28, 2025"
+    },
+    {
+        "todo_id": 167,
+        "title": "Iure eveniet nesciunt ut.",
+        "description": "Dolorem earum cum est impedit incidunt. Est rerum tempora sint reiciendis quasi repellat et. Dolorem ea adipisci a non perferendis earum a. Et vel natus et qui delectus provident quisquam odio.",
+        "due_date": "February 20, 2025",
+        "created_at": "January 28, 2025"
+    }
+]
+```
+
+2. Response for todos.show
+```
+{
+    "todo_id": 166,
+    "title": "Et praesentium cumque assumenda quia",
+    "description": "Est impedit exercitationem illum voluptatem. Porro nam et ut quaerat illo placeat eaque. Temporibus nemo voluptates natus est ipsam est reiciendis rerum.",
+    "due_date": "February 14, 2025",
+    "created_at": "January 28, 2025"
+}
+```
+
+3. Response for todos.store
+```
+{“success”:”Todo created successfully”}
+```
+
+4. Response for todos.delete
+```
+{“success”:”Todo deleted successfully”}
+```
+
+5. Response for todos.update
+```
+{
+    "todo_id": 166,
+    "title": "Et praesentium cumque assumenda quia",
+    "description": "Est impedit exercitationem illum voluptatem. Porro nam et ut quaerat illo placeat eaque. Temporibus nemo voluptates natus est ipsam est reiciendis rerum.",
+    "due_date": "February 14, 2025",
+}
+```
+
