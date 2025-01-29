@@ -91,3 +91,9 @@ Using a new terminal, start the Laravel development server:
 ```
 php artisan serve
 ```
+
+## Sample Accounts for Testing
+In my database seeder, I've created accounts for testing:
+
+Email: test@email.com
+Password: usjr1234
