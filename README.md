@@ -18,7 +18,7 @@ Before proceeding, ensure you have the following installed:
 
 ---
 
-## Setup Instructions
+## Installation & Setup
 
 Follow these steps to set up the project locally:
 
@@ -26,18 +26,21 @@ Follow these steps to set up the project locally:
 
 ```bash
 git clone https://github.com/cedecj042/SkillTest.git
-cd <your-repository-name>
+cd SkillTest
 ```
 
-### 2. Run Composer Install and Npm Install 
+### 2. Install Backend & Frontend Dependencies
 
+Install PHP Dependencies
 ```
 composer install
 ``` 
+Install JavaScript Dependencies
 ```
 npm install
 ```
-Install the required packages and dependency for this project
+This will install all required Laravel and React dependencies.
+
 
 ### 3. Configure the Environment File
 
@@ -46,7 +49,7 @@ Create a copy of the .env.example file and rename it to .env:
 cp .env.example .env
 ```
 
-update the env with your database credentials and other configuration
+Then update the .env file with your database credentials and other configurations:
 ```
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
@@ -59,19 +62,20 @@ DB_PASSWORD=<your_database_password>
 
 ### 4. Generate Application Key
 
-Generate application key for the laravel project:
+Laravel requires an application key for security. Generate it using:
 ```
 php artisan key:generate
 ```
+This will update the .env file with a valid APP_KEY.
 
 ### 5. Migrate the Database
 
-Run the database migrations to create the required tables:
+Run the following command to create the necessary database tables:
 ```
 php artisan migrate
 ```
 
-Since I have created seeders, you can also run:
+To seed the database with initial data, run:
 ```
 php artisan db:seed
 ```
